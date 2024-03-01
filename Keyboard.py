@@ -2,11 +2,11 @@ import tkinter as tk
 from winsound import *
 from playsound import playsound
 
-playC1 = lambda: playsound('sounds\piano-mp3_C1.mp3')
-playD1 = lambda: playsound('sounds\piano-mp3_D1.mp3')
-playE1 = lambda: playsound('sounds\piano-mp3_E1.mp3')
-playDb1 = lambda: playsound('sounds\piano-mp3_Db1.mp3')
-playEb1 = lambda: playsound('sounds\piano-mp3_Eb1.mp3')
+playC1 = lambda: playsound('sounds\C1.mp3')
+playD1 = lambda: playsound('sounds\D1.mp3')
+playE1 = lambda: playsound('sounds\E1.mp3')
+playDb1 = lambda: playsound('sounds\Db1.mp3')
+playEb1 = lambda: playsound('sounds\Eb1.mp3')
 whiteKeys = [("C1",playC1),("D1",playD1),("E1",playE1)]
 blackKeys = [("Db1",playDb1),("Eb1",playEb1)]
 window = tk.Tk()
