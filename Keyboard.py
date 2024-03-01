@@ -11,7 +11,7 @@ whiteKeys = [("C1",playC1),("D1",playD1),("E1",playE1)]
 blackKeys = [("Db1",playDb1),("Eb1",playEb1)]
 window = tk.Tk()
 window.geometry("500x500")
-greeting = tk.Label(text="Tervetukia kosketinsoittimeen")
+greeting = tk.Label(text="Tervetuloa kosketinsoittimeen")
 greeting.pack()
 x_pos = 0
 y_pos = 100
@@ -22,7 +22,7 @@ x_pos = 25
 y_pos = 75
 for key in blackKeys:
     x_pos = x_pos+50
-    tk.Button(window, text = key[0], command = key[1], background="black").place(x=x_pos,y=y_pos)   
+    tk.Button(window, text = key[0], command = key[1], background="black", fg="white").place(x=x_pos,y=y_pos)   
 
 
 
