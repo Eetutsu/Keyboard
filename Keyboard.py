@@ -1,28 +1,46 @@
 import tkinter as tk
-from winsound import *
+import os
 from playsound import playsound
+import re
 
-playC1 = lambda: playsound('sounds\C1.mp3')
-playD1 = lambda: playsound('sounds\D1.mp3')
-playE1 = lambda: playsound('sounds\E1.mp3')
-playDb1 = lambda: playsound('sounds\Db1.mp3')
-playEb1 = lambda: playsound('sounds\Eb1.mp3')
-whiteKeys = [("C1",playC1),("D1",playD1),("E1",playE1)]
-blackKeys = [("Db1",playDb1),("Eb1",playEb1)]
+directory = 'sounds'
+file_names = []
+
+for filename in os.listdir(directory):
+    file_names.append(filename)
+
+
+pattern = r'([A-Ga-g])(b?\d+)\.mp3'
+
+
+normal_notes = []
+flat_notes = []
+
+for file_name in file_names:
+    match = re.match(pattern, file_name)
+    if match:
+        note = match.group(1) + match.group(2)
+        if 'b' in note:
+            flat_notes.append(note)
+        else:
+            normal_notes.append(note)
+
+
+
 window = tk.Tk()
-window.geometry("500x500")
+window.geometry("1650x250")
 greeting = tk.Label(text="Tervetuloa kosketinsoittimeen")
 greeting.pack()
 x_pos = 0
 y_pos = 100
-for key in whiteKeys:
-    x_pos = x_pos+50
-    tk.Button(window, text = key[0], command = key[1], width=5,background="white").place(x=x_pos,y=y_pos)   
+for key in normal_notes, enumerate(file_names):
+    x_pos = x_pos+30
+    tk.Button(window, text = key, command = lambda: playsound(f'sounds\{file_names}'), width=3,background="white").place(x=x_pos,y=y_pos)   
 x_pos = 25
 y_pos = 75
-for key in blackKeys:
-    x_pos = x_pos+50
-    tk.Button(window, text = key[0], command = key[1], background="black", fg="white").place(x=x_pos,y=y_pos)   
+#for key in flat_notes:
+#   x_pos = x_pos+50
+#  tk.Button(window, text = flat_notes, command = key[1], background="black", fg="white").place(x=x_pos,y=y_pos)   
 
 
 
